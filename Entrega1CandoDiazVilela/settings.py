@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Entrega1CandoDiazVilela.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [f"{BASE_DIR}/Entrega1CandoDiazVilela/template"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

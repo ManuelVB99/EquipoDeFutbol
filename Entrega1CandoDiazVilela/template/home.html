@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <title>CLUB ATLÉTICO CADIVIL</title>
+</head>
+<body class="d-flex h-100 text-center text-bg-secondary">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/home/Equipo">Equipo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/home/Jugadores">Jugadores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/home/Fechas">Fechas próximos partidos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column justify-content-center">
+    {% block contenido %}
+        <main class="px-3">
+            <h1>CLUB ATLÉTICO CADIVIL</h1>
+            <p class="lead"> 
+             Macarena Díaz - Manuel Cando - Manuel Vilela Blanco</p>
+            
+        </main>
+    {% endblock%}
+    </div>
+
+</body>
+</html>

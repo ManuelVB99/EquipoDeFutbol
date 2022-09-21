@@ -16,11 +16,11 @@
         </form>
         <p class="lead">Listado de jugadores</p>
         <p>{%for d in Jugadores%}
-            Nombre: {{d.nombre}} | Apelido: {{d.apellido}} | Edad: {{d.edad}} | Pie Hábil: {{d.pieHabil}} | Posicion: {{d.posicion}}<br>
+            Nombre: {{d.nombre}} - Apelido: {{d.apellido}} - Edad: {{d.edad}}<br>
         {%endfor%}
     </p>
     </div>
-    <p class="lead">Buscar jugador</p>
+    <p class="lead">Buscar más info de jugador</p>
     <div>
         <form class="formjugadores" action="/Home/buscar_jugadores/" method="GET">
             <input type="text" name="apellido" placeholder="Apellido">
@@ -31,7 +31,7 @@
         {% if jugador %}
         <ul>
             {% for d in jugador %}
-            Nombre: {{d.nombre}} | Appelido: {{d.apellido}} | Edad: {{d.edad}} | Pie Hábil: {{d.pieHabil}} | Posicion: {{d.posicion}}
+            Nombre: {{d.nombre}} - Appelido: {{d.apellido}} - Edad: {{d.edad}} - Pie Hábil: {{d.pieHabil}} - Posicion: {{d.posicion}}
             {% endfor %}
         </ul>
         {% endif %}

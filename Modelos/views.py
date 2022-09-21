@@ -19,3 +19,12 @@ def buscar_jugador(request):
     else:
         respuesta = "No enviaste datos"
     return HttpResponse(respuesta)
+
+def fechas(request):
+    if request.method == "POST":
+       fechas =  Fechas(equipoContrario = request.POST['equipoContrario'], fecha = request.POST['fecha'], lugar = request.POST['lugar'])
+       fechas.save()
+       fechas = Fechas.objects.all()
+       return render(request, "Fechas.html", {"fechas": fechas})
+    fechas = Fechas.objects.all()
+    return render(request, "Fechas.html", {"fechas": fechas})

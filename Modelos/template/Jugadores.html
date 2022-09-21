@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/estilos.css'%}">
+{% block contenido %}
+    <h1>Club Atlético Coder</h1>
+    <div>
+        <p class="lead">Registrar nuevo jugador</p>
+        <form class="formregistro" action="/Home/Jugadores/" method="POST"> {% csrf_token %}
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="apellido" placeholder="Apellido">
+            <input type="number" name="edad" placeholder="Edad">
+            <input type="text" name="posicion" placeholder="Posicion">
+            <input type="text" name="pieHabil" placeholder="Pie Habil">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+        <p class="lead">Listado de jugadores</p>
+        <p>{%for d in Jugadores%}
+            Nombre: {{d.nombre}} | Apelido: {{d.apellido}} | Edad: {{d.edad}} | Pie Hábil: {{d.pieHabil}} | Posicion: {{d.posicion}}<br>
+        {%endfor%}
+    </p>
+    </div>
+    <p class="lead">Buscar jugador</p>
+    <div>
+        <form class="formjugadores" action="/Home/buscar_jugadores/" method="GET">
+            <input type="text" name="apellido" placeholder="Apellido">
+            <button type="submit" class="btn btn-primary">Buscar</button><br>
+        </form>
+    </div>
+    <div>
+        {% if jugador %}
+        <ul>
+            {% for d in jugador %}
+            Nombre: {{d.nombre}} | Appelido: {{d.apellido}} | Edad: {{d.edad}} | Pie Hábil: {{d.pieHabil}} | Posicion: {{d.posicion}}
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/estilos.css'%}">
+{% block contenido %}
+<h1>CLUB Atlético Coder</h1>
+<div>
+    <p class="lead">Nuevo personal técnico</p>
+    <form class="formregistro" action="/Home/Equipo/" method="POST"> {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="apellido" placeholder="Apellido">
+        <input type="number" name="edad" placeholder="Edad">
+        <input type="text" name="funcion" placeholder="Funcion">
+        <button type="submit" class="btn btn-primary"> REGISTRAR</button>
+    </form>
+</div>
+<div>    
+        <form class="formregistro" action="/Home/buscar_equipo/" method="GET">
+            <input type="apellido" name="apellido" placeholder="Apellido">
+            <button type="submit" class="btn btn-primary btndj"> BUSCAR </button>
+        </form>
+</div>
+<div>
+        {% if equipo_ok %}
+        <ul>
+            {% for equipo in equipo_ok %}
+            <li> {{equipo.nombre}}  </li> <li>{{equipo.apellido}} </li> 
+            <li>{{equipo.edad}} | {{equipo.funcion}} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}    
+</div>
+{% endblock %}

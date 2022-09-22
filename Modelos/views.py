@@ -28,3 +28,21 @@ def fechas(request):
        return render(request, "Fechas.html", {"fechas": fechas})
     fechas = Fechas.objects.all()
     return render(request, "Fechas.html", {"fechas": fechas})
+
+def equipo(request):
+    if request.method == "POST":
+        equipo_tec = Equipo_Tecnico(nombre = request.POST['nombre'], apellido = request.POST['apellido'], edad = request.POST['edad'], funcion = request.POST["funcion"])
+        equipo_tec.save()
+        return render(request, "Equipo.html")
+    else:
+        equipo = Equipo_Tecnico.objects.all()
+    return render(request, "Equipo.html", {"equipo": equipo})
+
+def buscar_equipo(request):
+    if request.GET["apellido"]:
+        apellido = request.GET["apellido"]
+        equipo_ok = Equipo_Tecnico.objects.filter(apellido__icontains = apellido)
+        return render(request, "Equipo.html", {"equipo_ok": equipo_ok})
+    else:
+        respuesta = print("No se encontró a nadie con ese apellido")
+    return render(request, "Equipo.html", {"respuesta": respuesta})
